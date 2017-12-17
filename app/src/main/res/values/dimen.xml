@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_default">10dp</dimen>
+    <dimen name="margin_default4x">40dp</dimen>
+    <dimen name="padding_default">10dp</dimen>
+    <dimen name="page_indicator_size">6dp</dimen>
+    <dimen name="page_indicator_layout_width">20dp</dimen>
+    <dimen name="survey_list_title_size">30sp</dimen>
+    <dimen name="survey_list_description_size">16sp</dimen>
+    <dimen name="button_round_radius">50dp</dimen>
+    <dimen name="round_button_padding_left_right">25dp</dimen>
+    <dimen name="round_button_padding_top_bottom">10dp</dimen>
+</resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.wk.surveys.views.activities.MainActivity">
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:openDrawer="right">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <FrameLayout
+                android:id="@+id/content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@android:color/white"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true">
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/AppTheme.ToolBar"
+                    android:background="@color/colorSurveyToolbar"
+                    app:layout_scrollFlags="scroll|enterAlways"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/toolbar_title_survey"
+                    android:layout_centerInParent="true"
+                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Widget.ActionBar.Title"
+                    android:textColor="@android:color/white"/>
+            </RelativeLayout>
+
+            <com.github.ybq.android.spinkit.SpinKitView
+                android:id="@+id/loading_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_default"
+                style="@style/SpinKitView.ChasingDots"
+                android:layout_centerInParent="true"
+                app:SpinKit_Color="@color/colorAccent"/>
+        </RelativeLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:fitsSystemWindows="true"
+            android:background="@android:color/white"
+            app:menu="@menu/activity_main_drawer_menu"/>
+    </android.support.v4.widget.DrawerLayout>
+</layout>
+

@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.FullScreen.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:buttonStyle">@style/AppTheme.PrimaryRoundButton</item>
+    </style>
+
+    <style name="AppTheme.ToolBar" parent="ThemeOverlay.AppCompat.ActionBar">
+        <item name="colorControlNormal">@android:color/tab_indicator_text</item>
+        <item name="android:textColorPrimary">@android:color/tab_indicator_text</item>
+        <item name="android:windowNoTitle">false</item>
+    </style>
+
+    <style name="AppTheme.BaseRoundButton" parent="android:Widget.Button">
+        <item name="android:paddingLeft">@dimen/round_button_padding_left_right</item>
+        <item name="android:paddingRight">@dimen/round_button_padding_left_right</item>
+        <item name="android:paddingTop">@dimen/round_button_padding_top_bottom</item>
+        <item name="android:paddingBottom">@dimen/round_button_padding_top_bottom</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.PrimaryRoundButton" parent="AppTheme.BaseRoundButton">
+        <item name="android:background">@drawable/button_round_primary</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+</resources>

@@ -1,0 +1,24 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.wk.surveys.views.fragments.SurveyListFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <me.kaelaela.verticalviewpager.VerticalViewPager
+            android:id="@+id/survey_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <me.relex.circleindicator.CircleIndicator
+            android:id="@+id/page_indicator"
+            android:layout_width="@dimen/page_indicator_layout_width"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            app:ci_width="@dimen/page_indicator_size"
+            app:ci_height="@dimen/page_indicator_size"
+            app:ci_drawable="@drawable/circle_page_indicator_selected"
+            app:ci_drawable_unselected="@drawable/circle_page_indicator_unselect"
+            app:ci_orientation="vertical"/>
+    </RelativeLayout>
+</layout>
+

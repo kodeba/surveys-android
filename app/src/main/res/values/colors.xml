@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#212121</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#F44336</color>
+    <color name="colorAccentLight">#FF1744</color>
+    <color name="colorSurveyToolbar">#88000000</color>
+</resources>
