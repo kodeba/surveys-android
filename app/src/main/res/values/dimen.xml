@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_default">10dp</dimen>
+    <dimen name="margin_default2x">20dp</dimen>
     <dimen name="margin_default4x">40dp</dimen>
     <dimen name="padding_default">10dp</dimen>
     <dimen name="page_indicator_size">6dp</dimen>

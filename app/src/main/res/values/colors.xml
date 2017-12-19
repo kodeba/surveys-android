@@ -5,4 +5,5 @@
     <color name="colorAccent">#F44336</color>
     <color name="colorAccentLight">#FF1744</color>
     <color name="colorSurveyToolbar">#88000000</color>
+    <color name="colorAlphaZero">#00000000</color>
 </resources>

@@ -37,4 +37,16 @@
         <item name="android:background">@drawable/button_round_primary</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
+
+    <style name="AppTheme.HeartRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_bar_heart</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:minWidth">24dp</item>
+    </style>
+
+    <style name="AppTheme.SmileyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_bar_smiley</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:minWidth">24dp</item>
+    </style>
 </resources>

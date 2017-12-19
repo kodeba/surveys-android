@@ -43,6 +43,7 @@
             android:text="Lorem Ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."/>
     </LinearLayout>
     <Button
+        android:id="@+id/take_survey_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

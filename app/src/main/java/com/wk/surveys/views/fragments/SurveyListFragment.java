@@ -2,6 +2,7 @@ package com.wk.surveys.views.fragments;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,22 +26,30 @@ import timber.log.Timber;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SurveyListFragment extends Fragment {
+public class SurveyListFragment extends Fragment implements SurveyListAdapter.SurveyListListener {
 
+    SurveyListAdapter.SurveyListListener surveyListListener;
 
     public SurveyListFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof SurveyListAdapter.SurveyListListener){
+            surveyListListener = (SurveyListAdapter.SurveyListListener) context;
+        }else{
+            throw new RuntimeException("Activity must implement "+ SurveyListAdapter.SurveyListListener.class.getSimpleName());
+        }
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentSurveyListBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_survey_list, container, false);
         SurveyViewModel surveyViewModel = ViewModelProviders.of(getActivity()).get(SurveyViewModel.class);
 
-        SurveyListAdapter adapter = new SurveyListAdapter(getContext());
+        SurveyListAdapter adapter = new SurveyListAdapter(getContext(),this);
         binding.surveyViewpager.setAdapter(adapter);
         binding.surveyViewpager.setPageTransformer(false, new DefaultTransformer());
 
@@ -61,4 +70,8 @@ public class SurveyListFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void OnSurveyListSelected(Survey survey) {
+        surveyListListener.OnSurveyListSelected(survey);
+    }
 }

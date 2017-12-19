@@ -3,12 +3,15 @@ package com.wk.data.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
+
 import java.util.List;
 
 /**
  * Created by watsaponk on 16/12/2017 AD.
  */
-
+@Parcel
 public class Question {
     @SerializedName("id")
     @Expose
@@ -53,6 +56,7 @@ public class Question {
     @Expose
     private List<Answer> answers;
 
+    @ParcelConstructor
     public Question(
             String id,
             String text,

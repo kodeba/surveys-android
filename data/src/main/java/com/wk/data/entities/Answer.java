@@ -3,10 +3,13 @@ package com.wk.data.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
+
 /**
  * Created by watsaponk on 16/12/2017 AD.
  */
-
+@Parcel
 public class Answer {
     @SerializedName("id")
     @Expose
@@ -33,6 +36,7 @@ public class Answer {
     @Expose
     private String responseClass;
 
+    @ParcelConstructor
     public Answer(
             String id,
             String questionId,
