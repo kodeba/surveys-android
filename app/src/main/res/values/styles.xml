@@ -17,6 +17,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:buttonStyle">@style/AppTheme.PrimaryRoundButton</item>
+        <item name="android:alertDialogTheme">@style/AppTheme.AlertDialog</item>
     </style>
 
     <style name="AppTheme.ToolBar" parent="ThemeOverlay.AppCompat.ActionBar">
@@ -36,5 +37,22 @@
     <style name="AppTheme.PrimaryRoundButton" parent="AppTheme.BaseRoundButton">
         <item name="android:background">@drawable/button_round_primary</item>
         <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AppTheme.HeartRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_bar_heart</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:minWidth">24dp</item>
+    </style>
+
+    <style name="AppTheme.SmileyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/rating_bar_smiley</item>
+        <item name="android:minHeight">24dp</item>
+        <item name="android:minWidth">24dp</item>
+    </style>
+
+    <style name="AppTheme.AlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
     </style>
 </resources>

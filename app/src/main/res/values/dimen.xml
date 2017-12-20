@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_default">10dp</dimen>
+    <dimen name="margin_default2x">20dp</dimen>
     <dimen name="margin_default4x">40dp</dimen>
     <dimen name="padding_default">10dp</dimen>
     <dimen name="page_indicator_size">6dp</dimen>
@@ -10,4 +11,6 @@
     <dimen name="button_round_radius">50dp</dimen>
     <dimen name="round_button_padding_left_right">25dp</dimen>
     <dimen name="round_button_padding_top_bottom">10dp</dimen>
+    <dimen name="social_button_size">42dp</dimen>
+    <dimen name="question_main_image_size">160dp</dimen>
 </resources>

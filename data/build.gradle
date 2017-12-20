@@ -1,13 +1,13 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.compileSdkVersion
+        versionCode rootProject.versionCode
+        versionName rootProject.versionName
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -17,28 +17,34 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     testImplementation 'junit:junit:4.12'
 
     //RxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     implementation 'io.reactivex.rxjava2:rxjava:2.1.5'
     //Architecture Component
-    implementation "android.arch.lifecycle:common-java8:1.0.0"
-    annotationProcessor "android.arch.lifecycle:compiler:1.0.0"
-    implementation "android.arch.persistence.room:runtime:1.0.0"
-    implementation "android.arch.persistence.room:compiler:1.0.0"
-    implementation 'android.arch.persistence.room:rxjava2:1.0.0'
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0"
+    implementation "android.arch.lifecycle:common-java8:$rootProject.archComponentVersion"
+    implementation "android.arch.lifecycle:extensions:$rootProject.archComponentVersion"
+    annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archComponentVersion"
+    implementation "android.arch.persistence.room:runtime:$rootProject.archComponentVersion"
+    implementation "android.arch.persistence.room:compiler:$rootProject.archComponentVersion"
+    implementation "android.arch.persistence.room:rxjava2:$rootProject.archComponentVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.archComponentVersion"
     //Parceler help pass object between activity
-    compile 'org.parceler:parceler-api:1.1.9'
-    annotationProcessor 'org.parceler:parceler:1.1.9'
+    implementation "org.parceler:parceler-api:$rootProject.parcelerVersion"
+    annotationProcessor "org.parceler:parceler:$rootProject.parcelerVersion"
     //Retrofit
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
 }

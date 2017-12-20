@@ -3,10 +3,13 @@ package com.wk.data.entities;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+import org.parceler.ParcelConstructor;
+
 /**
  * Created by watsaponk on 16/12/2017 AD.
  */
-
+@Parcel
 public class Answer {
     @SerializedName("id")
     @Expose
@@ -32,7 +35,11 @@ public class Answer {
     @SerializedName("response_class")
     @Expose
     private String responseClass;
+    @SerializedName("input_mask")
+    @Expose
+    private String inputMask;
 
+    @ParcelConstructor
     public Answer(
             String id,
             String questionId,
@@ -41,8 +48,8 @@ public class Answer {
             String inputMaskPlaceholder,
             Integer displayOrder,
             String displayType,
-            String responseClass
-    ) {
+            String responseClass,
+            String inputMask) {
         this.id = id;
         this.questionId = questionId;
         this.text = text;
@@ -51,6 +58,7 @@ public class Answer {
         this.displayOrder = displayOrder;
         this.displayType = displayType;
         this.responseClass = responseClass;
+        this.inputMask = inputMask;
     }
 
     public String getId() {
@@ -115,5 +123,13 @@ public class Answer {
 
     public void setResponseClass(String responseClass) {
         this.responseClass = responseClass;
+    }
+
+    public String getInputMask() {
+        return inputMask;
+    }
+
+    public void setInputMask(String inputMask) {
+        this.inputMask = inputMask;
     }
 }

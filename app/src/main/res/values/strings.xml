@@ -6,7 +6,11 @@
     <string name="nav_title_hsitory">History</string>
     <string name="toolbar_title_survey">SURVEY</string>
     <string name="button_take_survey">TAKE SURVEY</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="button_previous">PREVIOUS</string>
+    <string name="button_next">NEXT</string>
+    <string name="button_start">START</string>
+    <string name="button_submit">SUBMIT</string>
+    <string name="contact_us">CONTACT US</string>
+    <string name="textarea_default_text">TYPE TEXT HERE</string>
+    <string name="madatory_question_alert_text">Please answer this question first.</string>
 </resources>

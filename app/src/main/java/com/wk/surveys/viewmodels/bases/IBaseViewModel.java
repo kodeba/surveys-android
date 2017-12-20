@@ -13,6 +13,8 @@ import java.util.List;
 public interface IBaseViewModel<T> {
     LiveData<Response<List<T>>> getResponse();
     LiveData<Boolean> getLoadingStatus();
+    LiveData<Boolean> getRefreshNotify();
     void loadRemoteData(Integer page, Integer perPage);
     void loadLocalData();
+    void notifyRefresh();
 }

@@ -1,20 +1,28 @@
 package com.wk.surveys.views.activities;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.wk.data.entities.Survey;
 import com.wk.surveys.R;
+import com.wk.surveys.adapters.SurveyListAdapter;
 import com.wk.surveys.databinding.ActivityMainBinding;
 import com.wk.surveys.models.Response;
 import com.wk.surveys.uicomponents.EndDrawerToggle;
 import com.wk.surveys.viewmodels.SurveyViewModel;
 import com.wk.surveys.viewmodels.factories.SurveyViewModelFactory;
 import com.wk.surveys.views.fragments.SurveyListFragment;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -23,13 +31,13 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjection;
 import timber.log.Timber;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements SurveyListAdapter.SurveyListListener {
+
+    public static final String SELECTED_SURVEY = "selected_survey";
 
     @Inject
     SurveyViewModelFactory surveyViewModelFactory;
     SurveyViewModel surveyViewModel;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         setSupportActionBar(binding.toolbar);
+
+        Drawable drawableRefresh = new IconicsDrawable(this).icon(GoogleMaterial.Icon.gmd_refresh).color(Color.WHITE).actionBar();
+        binding.toolbar.setNavigationIcon(drawableRefresh);
+        binding.toolbar.setNavigationOnClickListener(v-> surveyViewModel.notifyRefresh());
 
         this.getSupportActionBar().setTitle("");
 
@@ -61,5 +73,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    @Override
+    public void OnSurveyListSelected(Survey survey) {
+        Intent intent = new Intent(this,DetailActivity.class);
+        intent.putExtra(SELECTED_SURVEY, Parcels.wrap(survey));
+        startActivity(intent);
+    }
 }

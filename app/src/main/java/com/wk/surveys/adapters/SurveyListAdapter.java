@@ -8,12 +8,14 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestListener;
@@ -36,11 +38,13 @@ public class SurveyListAdapter extends PagerAdapter {
     private final List<Survey> surveys;
     private final Context context;
     private final LayoutInflater inflater;
+    private final SurveyListListener listener;
 
-    public SurveyListAdapter(Context context) {
+    public SurveyListAdapter(Context context, SurveyListListener listener) {
         this.context = context;
         this.surveys = new ArrayList<>();
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.listener = listener;
     }
 
     public void setSurveys(List<Survey> list, Boolean clear){
@@ -69,20 +73,22 @@ public class SurveyListAdapter extends PagerAdapter {
         TextView title = view.findViewById(R.id.survey_title);
         TextView description = view.findViewById(R.id.survey_description);
         ImageView background = view.findViewById(R.id.image_background);
+        Button takeSurveyButton = view.findViewById(R.id.take_survey_button);
 
         if(survey!=null){
-            Timber.i("adapter %s ",survey.getCoverImageUrl());
             title.setText(survey.getTitle());
             description.setText(survey.getDescription());
-            RequestOptions requestOptions = new RequestOptions().centerCrop();
             DrawableTransitionOptions drawableTransitionOptions = new DrawableTransitionOptions().crossFade();
 
             GlideApp
                     .with(view)
                     .load(survey.getCoverImageUrl()+"l")
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .centerCrop()
                     .transition(drawableTransitionOptions)
                     .into(background);
+
+            takeSurveyButton.setOnClickListener(v-> this.listener.OnSurveyListSelected(survey));
         }
 
         container.addView(view);
@@ -93,5 +99,9 @@ public class SurveyListAdapter extends PagerAdapter {
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         container.removeView(((RelativeLayout)object));
+    }
+
+    public interface SurveyListListener {
+        void OnSurveyListSelected(Survey survey);
     }
 }
