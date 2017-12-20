@@ -23,6 +23,19 @@ allprojects {
     }
 }
 
+ext {
+    supportLibraryVersion = "27.0.2"
+    archComponentVersion = "1.0.0"
+    daggerVersion = "2.12"
+    parcelerVersion = "1.1.9"
+    glideVersion = "4.4.0"
+    retrofitVersion = "2.3.0"
+    compileSdkVersion = 27
+    minSdkVersion = 21
+    versionName = "1.0.0"
+    versionCode = 100000
+}
+
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
