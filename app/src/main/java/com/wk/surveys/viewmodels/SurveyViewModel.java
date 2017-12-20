@@ -1,5 +1,4 @@
 package com.wk.surveys.viewmodels;
-
 import com.wk.data.entities.Survey;
 import com.wk.domain.remote.bases.FindAllRemoteUseCase;
 import com.wk.surveys.viewmodels.bases.BaseViewModel;

@@ -83,6 +83,9 @@ public class DetailActivity extends AppCompatActivity implements QuestionViewEve
         Integer position = binding.questionViewpager.getCurrentItem();
         if(position != (survey.getQuestions().size() -1)){
             viewpagerGoToPosition(position+1);
+        }else{
+            // TODO: 20/12/2017 AD submit action
+            finish();
         }
     }
 
