@@ -16,5 +16,5 @@ Surveys Android Application
 * OUTRO
 
 #### TODO
-* Implement unit testing yet
+* Implement unit test
 * Config proguard rule
