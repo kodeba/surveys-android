@@ -8,4 +8,9 @@
     <string name="button_take_survey">TAKE SURVEY</string>
     <string name="button_previous">PREVIOUS</string>
     <string name="button_next">NEXT</string>
+    <string name="button_start">START</string>
+    <string name="button_submit">SUBMIT</string>
+    <string name="contact_us">CONTACT US</string>
+    <string name="textarea_default_text">TYPE TEXT HERE</string>
+    <string name="madatory_question_alert_text">Please answer this question first.</string>
 </resources>

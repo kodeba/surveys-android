@@ -15,16 +15,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.5">
-                <ImageView
-                    android:id="@+id/cover_image"
+                <include
+                    android:id="@+id/group_background"
+                    layout="@layout/question_cover_background_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_margin="@dimen/margin_default"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/margin_default"
-                    android:background="@color/colorSurveyToolbar"/>
                 <TextView
                     android:id="@+id/question_text"
                     android:layout_width="wrap_content"

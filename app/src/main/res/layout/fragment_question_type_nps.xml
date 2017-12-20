@@ -4,11 +4,74 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="NPS" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:weightSum="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5">
+                <include
+                    android:id="@+id/group_background"
+                    layout="@layout/question_cover_background_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/margin_default"/>
+                <TextView
+                    android:id="@+id/question_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_default"
+                    android:layout_margin="@dimen/margin_default2x"
+                    android:layout_centerInParent="true"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:text="Lorem Ipsum is placeholder text commonly used in the graphic, print,"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.5"
+                android:layout_margin="@dimen/margin_default"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/help_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_default"
+                    android:text="Lorem Ipsum is placeholder text commonly used in the graphic, print," />
+                <SeekBar
+                    android:id="@+id/nps_seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_marginBottom="@dimen/margin_default"
+                    android:max="10"
+                    android:progress="0"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_default"
+                    android:layout_marginRight="@dimen/margin_default">
+                    <TextView
+                        android:id="@+id/nps_min_number_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:layout_alignParentStart="true"/>
+                    <TextView
+                        android:id="@+id/nps_max_number_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:layout_alignParentEnd="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
 
         <include layout="@layout/question_navigation_button_group"
             android:id="@+id/button_navigatoin"

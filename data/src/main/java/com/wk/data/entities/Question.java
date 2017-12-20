@@ -52,6 +52,12 @@ public class Question {
     @SerializedName("cover_background_color")
     @Expose
     private String coverBackgroundColor;
+    @SerializedName("facebook_profile")
+    @Expose
+    private String facebookProfile;
+    @SerializedName("twitter_profile")
+    @Expose
+    private String twitterProfile;
     @SerializedName("answers")
     @Expose
     private List<Answer> answers;
@@ -70,8 +76,9 @@ public class Question {
             String imageUrl,
             String coverImageUrl,
             Double coverImageOpacity,
-            String coverBackgroundColor
-    ) {
+            String coverBackgroundColor,
+            String facebookProfile,
+            String twitterProfile) {
         this.id = id;
         this.text = text;
         this.helpText = helpText;
@@ -85,6 +92,8 @@ public class Question {
         this.coverImageUrl = coverImageUrl;
         this.coverImageOpacity = coverImageOpacity;
         this.coverBackgroundColor = coverBackgroundColor;
+        this.facebookProfile = facebookProfile;
+        this.twitterProfile = twitterProfile;
     }
 
     public String getId() {
@@ -189,6 +198,21 @@ public class Question {
 
     public void setCoverBackgroundColor(String coverBackgroundColor) {
         this.coverBackgroundColor = coverBackgroundColor;
+    }
+    public String getFacebookProfile() {
+        return facebookProfile;
+    }
+
+    public void setFacebookProfile(String facebookProfile) {
+        this.facebookProfile = facebookProfile;
+    }
+
+    public String getTwitterProfile() {
+        return twitterProfile;
+    }
+
+    public void setTwitterProfile(String twitterProfile) {
+        this.twitterProfile = twitterProfile;
     }
 
     public List<Answer> getAnswers() {

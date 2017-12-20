@@ -29,6 +29,7 @@ import timber.log.Timber;
 public class SurveyListFragment extends Fragment implements SurveyListAdapter.SurveyListListener {
 
     SurveyListAdapter.SurveyListListener surveyListListener;
+    private Boolean isClear = false;
 
     public SurveyListFragment() {
         // Required empty public constructor
@@ -53,12 +54,23 @@ public class SurveyListFragment extends Fragment implements SurveyListAdapter.Su
         binding.surveyViewpager.setAdapter(adapter);
         binding.surveyViewpager.setPageTransformer(false, new DefaultTransformer());
 
-
+        surveyViewModel.getRefreshNotify().observe(this, status->{
+            if(status){
+                isClear = true;
+                surveyViewModel.loadRemoteData(1, 5);
+            }
+        });
 
         surveyViewModel.getResponse().observe(this,response->{
             if(response.status){
-                adapter.setSurveys(response.data,false);
+                adapter.setSurveys(response.data,isClear);
                 binding.pageIndicator.setViewPager(binding.surveyViewpager);
+
+                if(isClear){
+                    binding.surveyViewpager.setCurrentItem(0);
+                }
+
+                isClear = false;
             }else{
                 Timber.i("error : %s",response.error.getMessage());
             }
@@ -74,4 +86,6 @@ public class SurveyListFragment extends Fragment implements SurveyListAdapter.Su
     public void OnSurveyListSelected(Survey survey) {
         surveyListListener.OnSurveyListSelected(survey);
     }
+
+
 }

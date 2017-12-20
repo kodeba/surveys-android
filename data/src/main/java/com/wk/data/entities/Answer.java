@@ -35,6 +35,9 @@ public class Answer {
     @SerializedName("response_class")
     @Expose
     private String responseClass;
+    @SerializedName("input_mask")
+    @Expose
+    private String inputMask;
 
     @ParcelConstructor
     public Answer(
@@ -45,8 +48,8 @@ public class Answer {
             String inputMaskPlaceholder,
             Integer displayOrder,
             String displayType,
-            String responseClass
-    ) {
+            String responseClass,
+            String inputMask) {
         this.id = id;
         this.questionId = questionId;
         this.text = text;
@@ -55,6 +58,7 @@ public class Answer {
         this.displayOrder = displayOrder;
         this.displayType = displayType;
         this.responseClass = responseClass;
+        this.inputMask = inputMask;
     }
 
     public String getId() {
@@ -119,5 +123,13 @@ public class Answer {
 
     public void setResponseClass(String responseClass) {
         this.responseClass = responseClass;
+    }
+
+    public String getInputMask() {
+        return inputMask;
+    }
+
+    public void setInputMask(String inputMask) {
+        this.inputMask = inputMask;
     }
 }

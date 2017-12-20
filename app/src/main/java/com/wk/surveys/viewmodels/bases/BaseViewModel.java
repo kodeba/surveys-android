@@ -23,6 +23,7 @@ public class BaseViewModel<T> extends ViewModel implements IBaseViewModel<T> {
     protected CompositeDisposable disposable = new CompositeDisposable();
     protected MutableLiveData<Response<List<T>>> response = new MutableLiveData<>();
     protected MutableLiveData<Boolean> loadingStatus = new MutableLiveData<>();
+    protected MutableLiveData<Boolean> refreshNotify = new MutableLiveData<>();
 
     public BaseViewModel(FindAllRemoteUseCase<T> findAllRemoteUseCase) {
         this.findAllRemoteUseCase = findAllRemoteUseCase;
@@ -39,7 +40,13 @@ public class BaseViewModel<T> extends ViewModel implements IBaseViewModel<T> {
     }
 
     @Override
+    public LiveData<Boolean> getRefreshNotify() {
+        return refreshNotify;
+    }
+
+    @Override
     public void loadRemoteData(Integer page, Integer perPage){
+        refreshNotify.setValue(false);
         disposable.add(
                 findAllRemoteUseCase.findAll(page, perPage).
                         subscribeOn(Schedulers.io())
@@ -56,6 +63,11 @@ public class BaseViewModel<T> extends ViewModel implements IBaseViewModel<T> {
     @Override
     public void loadLocalData(){
 
+    }
+
+    @Override
+    public void notifyRefresh() {
+        refreshNotify.setValue(true);
     }
 
     @Override

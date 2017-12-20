@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.ArrayMap;
 
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
@@ -13,6 +14,7 @@ import com.mikepenz.google_material_typeface_library.GoogleMaterial;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.iconics.context.IconicsContextWrapper;
 import com.wk.data.entities.Survey;
+import com.wk.data.entities.UserAnswer;
 import com.wk.surveys.GlideApp;
 import com.wk.surveys.R;
 import com.wk.surveys.adapters.QuestionViewPagerAdapter;
@@ -22,10 +24,14 @@ import com.wk.surveys.views.fragments.QuestionTypeRatingFragment;
 
 import org.parceler.Parcels;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DetailActivity extends AppCompatActivity implements QuestionViewEventListener {
 
     private Survey survey;
     private ActivityDetailBinding binding;
+    private Map<String, UserAnswer> userAnswerMap = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +74,12 @@ public class DetailActivity extends AppCompatActivity implements QuestionViewEve
     }
 
     @Override
-    public void OnNextQuestion() {
+    public void OnNextQuestion(String questionId, UserAnswer userAnswer) {
+        if(userAnswer!=null){
+            // TODO: 20/12/2017 AD list of user answer allow to keep in local database later 
+            userAnswerMap.put(questionId,userAnswer);
+        }
+
         Integer position = binding.questionViewpager.getCurrentItem();
         if(position != (survey.getQuestions().size() -1)){
             viewpagerGoToPosition(position+1);

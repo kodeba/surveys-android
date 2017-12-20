@@ -1,18 +1,53 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.wk.surveys.views.fragments.QuestionTypeIntroFragment">
-    <RelativeLayout android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="INTRO" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="?attr/actionBarSize">
+            <include
+                android:id="@+id/group_background"
+                layout="@layout/question_cover_background_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_margin="@dimen/margin_default"
+                android:gravity="center">
+                <FrameLayout
+                    android:layout_width="@dimen/question_main_image_size"
+                    android:layout_height="@dimen/question_main_image_size"
+                    android:layout_marginTop="@dimen/margin_default"
+                    android:background="@android:color/white">
+                    <ImageView
+                        android:id="@+id/main_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin_default"/>
+                </FrameLayout>
+                <TextView
+                    android:id="@+id/greeting_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/survey_list_description_size"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_margin="@dimen/margin_default"
+                    android:textAlignment="center"
+                    android:text="Lorem Ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups."/>
+            </LinearLayout>
+        </RelativeLayout>
 
         <include layout="@layout/question_navigation_button_group"
             android:id="@+id/button_navigatoin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:layout_alignParentBottom="true"/>
     </RelativeLayout>
 </layout>
