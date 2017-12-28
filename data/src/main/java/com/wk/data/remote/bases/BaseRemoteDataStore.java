@@ -15,8 +15,7 @@ import retrofit2.Retrofit;
 public abstract class BaseRemoteDataStore<T> {
     protected final Retrofit retrofit;
 
-    public BaseRemoteDataStore() {
-        RemoteAPI api = new RemoteAPI();
+    public BaseRemoteDataStore(RemoteAPI api) {
         retrofit = api.getRetrofit();
     }
 

@@ -2,6 +2,7 @@ package com.wk.surveys.injectors.moduels;
 
 import android.content.Context;
 
+import com.wk.data.remote.RemoteAPI;
 import com.wk.data.remote.datastores.SurveyRemoteDataStore;
 import com.wk.surveys.App;
 
@@ -20,10 +21,17 @@ public class AppModule {
         return application.getApplicationContext();
     }
 
+    //Core
+    @Singleton
+    @Provides
+    RemoteAPI provideRemoteAPI(){
+        return new RemoteAPI();
+    }
+
     //Survey
     @Singleton
     @Provides
-    SurveyRemoteDataStore provideSurveyRemoteDataStore(){
-        return new SurveyRemoteDataStore();
+    SurveyRemoteDataStore provideSurveyRemoteDataStore(RemoteAPI api){
+        return new SurveyRemoteDataStore(api);
     }
 }

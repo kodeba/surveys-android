@@ -20,21 +20,31 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RemoteAPI {
-    private final String END_POINT = "https://nimbl3-survey-api.herokuapp.com/";
+    public static final String END_POINT = "https://nimbl3-survey-api.herokuapp.com/";
+    private Retrofit retrofit = null;
 
     public RemoteAPI() {
+
     }
 
     public Retrofit getRetrofit(){
-        return new Retrofit.Builder()
-                .baseUrl(END_POINT)
-                .addConverterFactory(GsonConverterFactory.create(getGson()))
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(getSafeOkHttpClient())
-                .build();
+        if(retrofit == null){
+            retrofit = new Retrofit.Builder()
+                    .baseUrl(END_POINT)
+                    .addConverterFactory(GsonConverterFactory.create(RemoteAPI.getGson()))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .client(getSafeOkHttpClient())
+                    .build();
+        }
+
+        return retrofit;
     }
 
-    private Gson getGson(){
+    public void setRetrofit(Retrofit retrofit) {
+        this.retrofit = retrofit;
+    }
+
+    public static Gson getGson(){
         return new GsonBuilder()
                 .disableHtmlEscaping()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")

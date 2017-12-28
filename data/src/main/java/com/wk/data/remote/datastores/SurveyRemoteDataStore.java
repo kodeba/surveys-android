@@ -1,6 +1,7 @@
 package com.wk.data.remote.datastores;
 
 import com.wk.data.entities.Survey;
+import com.wk.data.remote.RemoteAPI;
 import com.wk.data.remote.bases.BaseRemoteDataStore;
 import com.wk.data.remote.repositories.SurveyRemoteRep;
 
@@ -15,8 +16,8 @@ import io.reactivex.Flowable;
 public class SurveyRemoteDataStore extends BaseRemoteDataStore<Survey> {
     private final SurveyRemoteRep remoteRep;
 
-    public SurveyRemoteDataStore() {
-        super();
+    public SurveyRemoteDataStore(RemoteAPI api) {
+        super(api);
         this.remoteRep = retrofit.create(SurveyRemoteRep.class);
     }
 
