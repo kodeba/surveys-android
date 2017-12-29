@@ -14,7 +14,6 @@ import com.wk.surveys.views.fragments.QuestionTypeRatingFragment;
 import com.wk.surveys.views.fragments.QuestionTypeTextAreaFragment;
 import com.wk.surveys.views.fragments.QuestionTypeTextFieldFragment;
 
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,11 +63,11 @@ public class QuestionViewPagerAdapter extends SmartFragmentStatePagerAdapter {
         private FragmentManager fragmentManager;
         private List<Fragment> fragments;
 
-        public Builder(@NotNull FragmentManager fragmentManager) {
+        public Builder(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
         }
 
-        public Builder setQuestions(@NonNull List<Question> questions) {
+        public Builder setQuestions(List<Question> questions) {
             this.fragments = new ArrayList<>();
 
             for (Question question : questions){

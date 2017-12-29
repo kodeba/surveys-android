@@ -30,6 +30,7 @@
                     android:background="@color/colorSurveyToolbar"
                     app:layout_scrollFlags="scroll|enterAlways"/>
                 <TextView
+                    android:id="@+id/toobar_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/toolbar_title_survey"

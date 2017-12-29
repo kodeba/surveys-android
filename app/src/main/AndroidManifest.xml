@@ -17,16 +17,13 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".views.activities.MainActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".views.activities.DetailActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.FullScreen.NoActionBar"/>
     </application>
 

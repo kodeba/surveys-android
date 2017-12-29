@@ -24,6 +24,7 @@ public class BaseViewModel<T> extends ViewModel implements IBaseViewModel<T> {
     protected MutableLiveData<Response<List<T>>> response = new MutableLiveData<>();
     protected MutableLiveData<Boolean> loadingStatus = new MutableLiveData<>();
     protected MutableLiveData<Boolean> refreshNotify = new MutableLiveData<>();
+    private Boolean isLoading = false;
 
     public BaseViewModel(FindAllRemoteUseCase<T> findAllRemoteUseCase) {
         this.findAllRemoteUseCase = findAllRemoteUseCase;
@@ -46,18 +47,26 @@ public class BaseViewModel<T> extends ViewModel implements IBaseViewModel<T> {
 
     @Override
     public void loadRemoteData(Integer page, Integer perPage){
-        refreshNotify.setValue(false);
-        disposable.add(
-                findAllRemoteUseCase.findAll(page, perPage).
-                        subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .doOnSubscribe(s-> loadingStatus.setValue(true))
-                        .doAfterTerminate(()-> loadingStatus.setValue(false))
-                        .subscribe(
-                                result->response.setValue(Response.success(result)),
-                                t->response.setValue(Response.error(t))
-                        )
-        );
+        if(!isLoading){
+            disposable.add(
+                    findAllRemoteUseCase.findAll(page, perPage).
+                            subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .doOnSubscribe(s->{
+                                isLoading = true;
+                                loadingStatus.setValue(isLoading);
+                            })
+                            .doAfterTerminate(()->{
+                                isLoading = false;
+                                loadingStatus.setValue(isLoading);
+                                refreshNotify.setValue(false);
+                            })
+                            .subscribe(
+                                    result->response.setValue(Response.success(result)),
+                                    t->response.setValue(Response.error(t))
+                            )
+            );
+        }
     }
 
     @Override
@@ -67,7 +76,9 @@ public class BaseViewModel<T> extends ViewModel implements IBaseViewModel<T> {
 
     @Override
     public void notifyRefresh() {
-        refreshNotify.setValue(true);
+        if(!isLoading){
+            refreshNotify.setValue(true);
+        }
     }
 
     @Override

@@ -54,10 +54,6 @@ dependencies {
     implementation "android.arch.lifecycle:common-java8:$rootProject.archComponentVersion"
     implementation "android.arch.lifecycle:extensions:$rootProject.archComponentVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.archComponentVersion"
-    implementation "android.arch.persistence.room:runtime:$rootProject.archComponentVersion"
-    implementation "android.arch.persistence.room:compiler:$rootProject.archComponentVersion"
-    implementation "android.arch.persistence.room:rxjava2:$rootProject.archComponentVersion"
-    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.archComponentVersion"
     //Dagger Dependentcy Injectoin
     implementation "com.google.dagger:dagger:$rootProject.daggerVersion"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.daggerVersion"
